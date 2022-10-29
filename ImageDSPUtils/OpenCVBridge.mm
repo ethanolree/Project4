@@ -27,8 +27,53 @@ using namespace cv;
 #pragma mark ===Write Your Code Here===
 // you can define your own functions here for processing the image
 
+int red[100];
+int green[100];
+int blue[100];
+int count = 0;
+Boolean trigger = false;
+int frameCount = 0;
 
 #pragma mark Define Custom Functions Here
+-(Boolean)processFinger:(Boolean)isFlashOn{
+    cv::Mat image_copy;
+    char text[50];
+    Scalar avgPixelIntensity;
+    Boolean detected;
+    int threshold = isFlashOn ? 150 : 100;
+    
+    cvtColor(_image, image_copy, CV_BGRA2BGR); // get rid of alpha for processing
+    avgPixelIntensity = cv::mean( image_copy );
+    // they say that sprintf is depricated, but it still works for c++
+    sprintf(text,"Avg. R: %.0f, G: %.0f, B: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
+    cv::putText(_image, text, cv::Point(0, 10), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    detected = (avgPixelIntensity.val[0] + avgPixelIntensity.val[1] + avgPixelIntensity.val[2]) / 3 < threshold;
+    
+    if (detected && frameCount >= 10) {
+        trigger = true;
+    }
+    
+    // Adds the pixel intensity to the color arrays
+    if (trigger && count < 100) {
+        red[count] = avgPixelIntensity.val[0];
+        green[count] = avgPixelIntensity.val[1];
+        blue[count] = avgPixelIntensity.val[2];
+        count += 1;
+    }
+    
+    // Displays text after 100 frames
+    if (count == 100) {
+        cv::putText(_image, "TEXT", cv::Point(0, 40), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    }
+    
+    // Gives a buffer for initilization of the camera
+    if (frameCount < 10) {
+        frameCount += 1;
+    }
+    
+    return detected;
+}
+
 -(void)processImage{
     
     cv::Mat frame_gray,image_copy;

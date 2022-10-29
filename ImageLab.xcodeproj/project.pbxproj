@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		789A9C48290DA311005348E7 /* questions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 789A9C47290DA311005348E7 /* questions.txt */; };
 		B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31A1D8340F0000114A1 /* AppDelegate.swift */; };
 		B650B31D1D8340F0000114A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31C1D8340F0000114A1 /* ViewController.swift */; };
 		B650B3201D8340F0000114A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650B31E1D8340F0000114A1 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		789A9C47290DA311005348E7 /* questions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.txt; sourceTree = "<group>"; };
 		B650B3171D8340F0000114A1 /* ImageLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650B31A1D8340F0000114A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B650B31C1D8340F0000114A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		B650B30E1D8340F0000114A1 = {
 			isa = PBXGroup;
 			children = (
+				789A9C47290DA311005348E7 /* questions.txt */,
 				B67B72B61D996AB2008EDDE1 /* opencv2.framework */,
 				B650B34A1D83435A000114A1 /* ImageDSPUtils */,
 				B650B3191D8340F0000114A1 /* ImageLab */,
@@ -127,7 +130,7 @@
 				TargetAttributes = {
 					B650B3161D8340F0000114A1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = F69WJ27LN4;
+						DevelopmentTeam = 86MHT76G63;
 						LastSwiftMigration = 1200;
 					};
 				};
@@ -160,6 +163,7 @@
 				B67B72BF1D99D0AD008EDDE1 /* nose.xml in Resources */,
 				B650B3251D8340F0000114A1 /* LaunchScreen.storyboard in Resources */,
 				B650B3221D8340F0000114A1 /* Assets.xcassets in Resources */,
+				789A9C48290DA311005348E7 /* questions.txt in Resources */,
 				B650B3201D8340F0000114A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,7 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = F69WJ27LN4;
+				DEVELOPMENT_TEAM = 86MHT76G63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -324,7 +328,7 @@
 				INFOPLIST_FILE = ImageLab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.ImageLab;
+				PRODUCT_BUNDLE_IDENTIFIER = SMU.ImageLab7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImageLab/ImageLab-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -337,7 +341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = F69WJ27LN4;
+				DEVELOPMENT_TEAM = 86MHT76G63;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -346,7 +350,7 @@
 				INFOPLIST_FILE = ImageLab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.ImageLab;
+				PRODUCT_BUNDLE_IDENTIFIER = SMU.ImageLab7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImageLab/ImageLab-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

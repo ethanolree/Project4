@@ -17,10 +17,13 @@ class ViewController: UIViewController   {
     let pinchFilterIndex = 2
     var detector:CIDetector! = nil
     let bridge = OpenCVBridge()
+    var isFlashOn = false;
     
     //MARK: Outlets in view
     @IBOutlet weak var flashSlider: UISlider!
     @IBOutlet weak var stageLabel: UILabel!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var flashButton: UIButton!
     
     //MARK: ViewController Hierarchy
     override func viewDidLoad() {
@@ -32,7 +35,7 @@ class ViewController: UIViewController   {
         self.bridge.loadHaarCascade(withFilename: "nose")
         
         self.videoManager = VideoAnalgesic(mainView: self.view)
-        self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.front)
+        self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
         
         // create dictionary for face detection
         // HINT: you need to manipulate these properties for better face detection efficiency
@@ -54,12 +57,6 @@ class ViewController: UIViewController   {
     //MARK: Process image output
     func processImageSwift(inputImage:CIImage) -> CIImage{
         
-        // detect faces
-        let f = getFaces(img: inputImage)
-        
-        // if no faces, just return original image
-        if f.count == 0 { return inputImage }
-        
         var retImage = inputImage
         
         //-------------------Example 1----------------------------------
@@ -75,24 +72,32 @@ class ViewController: UIViewController   {
         //-------------------Example 2----------------------------------
         // use this code if you are using OpenCV and want to overwrite the displayed image via OpenCV
         // this is a BLOCKING CALL
-        /*
+        
         // FOR FLIPPED ASSIGNMENT, YOU MAY BE INTERESTED IN THIS EXAMPLE
         self.bridge.setTransforms(self.videoManager.transform)
-        self.bridge.setImage(retImage, withBounds: retImage.extent, andContext: self.videoManager.getCIContext())
-        self.bridge.processImage()
+        self.bridge.setImage(retImage, withBounds: CGRect(origin: CGPointMake(50, 0), size: retImage.extent.size), andContext: self.videoManager.getCIContext())
+        
+        if (self.bridge.processFinger(isFlashOn)) {
+            DispatchQueue.main.async {
+                self.cameraButton.isEnabled = false;
+                self.flashButton.isEnabled = false;
+                self.videoManager.turnOnFlashwithLevel(1.0);
+                self.isFlashOn = true;
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.cameraButton.isEnabled = true;
+                self.flashButton.isEnabled = true;
+                self.videoManager.turnOffFlash();
+                self.isFlashOn = false;
+            }
+        }
         retImage = self.bridge.getImage()
-         */
+        
         
         //-------------------Example 3----------------------------------
         //You can also send in the bounds of the face to ONLY process the face in OpenCV
         // or any bounds to only process a certain bounding region in OpenCV
-        self.bridge.setTransforms(self.videoManager.transform)
-        self.bridge.setImage(retImage,
-                             withBounds: f[0].bounds, // the first face bounds
-                             andContext: self.videoManager.getCIContext())
-        
-        self.bridge.processImage()
-        retImage = self.bridge.getImageComposite() // get back opencv processed part of the image (overlayed on original)
         
         return retImage
     }

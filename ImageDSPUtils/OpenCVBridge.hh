@@ -16,6 +16,8 @@
 
 @property (nonatomic) NSInteger processType;
 
+// process the finger
+-(Boolean)processFinger:(Boolean)isFlashOn;
 
 // set the image for processing later
 -(void) setImage:(CIImage*)ciFrameImage
