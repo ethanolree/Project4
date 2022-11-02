@@ -27,23 +27,30 @@ using namespace cv;
 #pragma mark ===Write Your Code Here===
 // you can define your own functions here for processing the image
 
-int red[100];
-int green[100];
-int blue[100];
+//30fps * seconds to track
+__const int timeToCount = 30 * 6;
+double red[timeToCount];
+int green[timeToCount];
+int blue[timeToCount];
 int count = 0;
 Boolean trigger = false;
 int frameCount = 0;
+int heartRate = 0;
 
 #pragma mark Define Custom Functions Here
 -(Boolean)processFinger:(Boolean)isFlashOn{
     cv::Mat image_copy;
+    cv::Mat float_image_copy;
     char text[50];
     Scalar avgPixelIntensity;
+    Scalar avgFloatPixelIntensity;
     Boolean detected;
     int threshold = isFlashOn ? 150 : 100;
     
     cvtColor(_image, image_copy, CV_BGRA2BGR); // get rid of alpha for processing
     avgPixelIntensity = cv::mean( image_copy );
+    
+    avgFloatPixelIntensity = cv::sum( image_copy );
     // they say that sprintf is depricated, but it still works for c++
     sprintf(text,"Avg. R: %.0f, G: %.0f, B: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
     cv::putText(_image, text, cv::Point(0, 10), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
@@ -54,17 +61,29 @@ int frameCount = 0;
     }
     
     // Adds the pixel intensity to the color arrays
-    if (trigger && count < 100) {
+    if (trigger && count < timeToCount) {
         red[count] = avgPixelIntensity.val[0];
         green[count] = avgPixelIntensity.val[1];
         blue[count] = avgPixelIntensity.val[2];
         count += 1;
+        
+        cv::putText(_image, "current heart rate: " + std::to_string(heartRate) , cv::Point(0, 40), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
     }
     
     // Displays text after 100 frames
-    if (count == 100) {
-        cv::putText(_image, "TEXT", cv::Point(0, 40), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    if (count == timeToCount) {
+        //count peaks, extrapolate to heart rate
+        heartRate=0;
+        for (int i=1;i<timeToCount;i++){
+            if (red[i]>red[i-1] && red[i]>red[i+1]){
+                heartRate++;
+            }
+        }
+        heartRate = heartRate*10;
+        cv::putText(_image, "current heart rate: " + std::to_string(heartRate) , cv::Point(0, 40), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+        count = 0;
     }
+    
     
     // Gives a buffer for initilization of the camera
     if (frameCount < 10) {
