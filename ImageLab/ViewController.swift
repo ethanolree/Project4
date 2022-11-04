@@ -81,7 +81,7 @@ class ViewController: UIViewController   {
             DispatchQueue.main.async {
                 self.cameraButton.isEnabled = false;
                 self.flashButton.isEnabled = false;
-                self.videoManager.turnOnFlashwithLevel(1.0);
+                self.videoManager.turnOnFlashwithLevel(0.5);
                 self.isFlashOn = true;
             }
         } else {

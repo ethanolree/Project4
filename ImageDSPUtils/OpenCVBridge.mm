@@ -28,7 +28,7 @@ using namespace cv;
 // you can define your own functions here for processing the image
 
 //30fps * seconds to track
-__const int timeToCount = 30 * 6;
+__const int timeToCount = 30 * 15;
 double red[timeToCount];
 int green[timeToCount];
 int blue[timeToCount];
@@ -71,15 +71,19 @@ int heartRate = 0;
     }
     
     // Displays text after 100 frames
+    //Assuming max heart rate of 225bpm, 30fps wouldn't allow peaks within 8 frames
     if (count == timeToCount) {
         //count peaks, extrapolate to heart rate
         heartRate=0;
-        for (int i=1;i<timeToCount;i++){
-            if (red[i]>red[i-1] && red[i]>red[i+1]){
+        for (int i=4;i<timeToCount;i++){
+            if (red[i]>red[i-4] && red[i]>red[i-3] && red[i]>red[i-2] && red[i]>red[i-1] && red[i]>red[i+1] && red[i]>red[i+2] && red[i]>red[i+3]){
                 heartRate++;
+                i = i+3;
             }
+            
+            
         }
-        heartRate = heartRate*10;
+        heartRate = heartRate*4;
         cv::putText(_image, "current heart rate: " + std::to_string(heartRate) , cv::Point(0, 40), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
         count = 0;
     }
