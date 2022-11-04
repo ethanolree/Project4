@@ -71,12 +71,12 @@ int heartRate = 0;
     }
     
     // Displays text after 100 frames
-    //Assuming max heart rate of 225bpm, 30fps wouldn't allow peaks within 8 frames
+    //Assuming max heart rate of 200bpm, 30fps wouldn't allow peaks within 9 frames
     if (count == timeToCount) {
         //count peaks, extrapolate to heart rate
         heartRate=0;
         for (int i=4;i<timeToCount;i++){
-            if (red[i]>red[i-4] && red[i]>red[i-3] && red[i]>red[i-2] && red[i]>red[i-1] && red[i]>red[i+1] && red[i]>red[i+2] && red[i]>red[i+3]){
+            if (red[i]>red[i-4] && red[i]>red[i-3] && red[i]>red[i-2] && red[i]>red[i-1] && red[i]>red[i+1] && red[i]>red[i+2] && red[i]>red[i+3] && red[i]>red[i+4]){
                 heartRate++;
                 i = i+3;
             }
