@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		785CB18B2915EA740050219D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CB18A2915EA740050219D /* ImageViewController.swift */; };
 		789A9C48290DA311005348E7 /* questions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 789A9C47290DA311005348E7 /* questions.txt */; };
 		B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31A1D8340F0000114A1 /* AppDelegate.swift */; };
-		B650B31D1D8340F0000114A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31C1D8340F0000114A1 /* ViewController.swift */; };
+		B650B31D1D8340F0000114A1 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31C1D8340F0000114A1 /* HeartRateViewController.swift */; };
 		B650B3201D8340F0000114A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650B31E1D8340F0000114A1 /* Main.storyboard */; };
 		B650B3221D8340F0000114A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B650B3211D8340F0000114A1 /* Assets.xcassets */; };
 		B650B3251D8340F0000114A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650B3231D8340F0000114A1 /* LaunchScreen.storyboard */; };
@@ -21,10 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		785CB18A2915EA740050219D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		789A9C47290DA311005348E7 /* questions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.txt; sourceTree = "<group>"; };
 		B650B3171D8340F0000114A1 /* ImageLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650B31A1D8340F0000114A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B650B31C1D8340F0000114A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B650B31C1D8340F0000114A1 /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
 		B650B31F1D8340F0000114A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B650B3211D8340F0000114A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B650B3241D8340F0000114A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				B650B31A1D8340F0000114A1 /* AppDelegate.swift */,
-				B650B31C1D8340F0000114A1 /* ViewController.swift */,
+				B650B31C1D8340F0000114A1 /* HeartRateViewController.swift */,
 				B650B31E1D8340F0000114A1 /* Main.storyboard */,
 				B650B3211D8340F0000114A1 /* Assets.xcassets */,
 				B650B3231D8340F0000114A1 /* LaunchScreen.storyboard */,
@@ -82,6 +84,7 @@
 				B650B34D1D834D46000114A1 /* smu-campus.jpg */,
 				B67B72BE1D99D0AD008EDDE1 /* nose.xml */,
 				B6EF2FD91F7A906A00C33387 /* PrefixHeader.pch */,
+				785CB18A2915EA740050219D /* ImageViewController.swift */,
 			);
 			path = ImageLab;
 			sourceTree = "<group>";
@@ -176,7 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E657991D95AA4500E75C60 /* VideoAnalgesic.swift in Sources */,
-				B650B31D1D8340F0000114A1 /* ViewController.swift in Sources */,
+				B650B31D1D8340F0000114A1 /* HeartRateViewController.swift in Sources */,
+				785CB18B2915EA740050219D /* ImageViewController.swift in Sources */,
 				B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */,
 				B67B72BB1D996ADE008EDDE1 /* OpenCVBridge.mm in Sources */,
 			);

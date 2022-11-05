@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HfN-VS-APw">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Heart Rate View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HeartRateViewController" customModule="ImageLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AZh-I9-zyC">
-                                <rect key="frame" x="14" y="617" width="347" height="31"/>
+                                <rect key="frame" x="14" y="597" width="347" height="31"/>
                                 <connections>
                                     <action selector="setFlashLevel:" destination="BYZ-38-t0r" eventType="valueChanged" id="lU7-s8-q3p"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HqB-mz-Xht">
-                                <rect key="frame" x="255" y="579" width="104" height="30"/>
+                                <rect key="frame" x="255" y="559" width="104" height="30"/>
                                 <state key="normal" title="Toggle Camera"/>
                                 <connections>
                                     <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8o5-A8-Yvy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsl-XI-9ND">
-                                <rect key="frame" x="16" y="579" width="87" height="30"/>
+                                <rect key="frame" x="16" y="559" width="87" height="30"/>
                                 <state key="normal" title="Toggle Flash"/>
                                 <connections>
                                     <action selector="flash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p39-Fo-nAF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stage: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17Z-Pc-DCH">
-                                <rect key="frame" x="155.5" y="550" width="64" height="21"/>
+                                <rect key="frame" x="155.5" y="530" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,6 +67,7 @@
                             <outletCollection property="gestureRecognizers" destination="nUe-kP-Uzk" appends="YES" id="Xdh-aW-cP8"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="Y19-MJ-4Pi"/>
                     <connections>
                         <outlet property="cameraButton" destination="HqB-mz-Xht" id="T2C-YY-4bg"/>
                         <outlet property="flashButton" destination="fsl-XI-9ND" id="awt-It-kbw"/>
@@ -85,12 +87,143 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="606" y="430"/>
+            <point key="canvasLocation" x="598" y="33"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="qLl-Ug-w6H">
+            <objects>
+                <tableViewController id="HfN-VS-APw" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4id-hs-PIO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Welcome" id="gqW-65-yUr" userLabel="Welcome">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Nay-Cv-USX" style="IBUITableViewCellStyleDefault" id="ok0-ch-9zs" userLabel="Row 1">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ok0-ch-9zs" id="CxC-UO-uuo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Heart Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nay-Cv-USX">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="PKL-jM-nFX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sYa-TN-Ag4" style="IBUITableViewCellStyleDefault" id="Jd8-WQ-LAc" userLabel="Row 2">
+                                        <rect key="frame" x="0.0" y="93.5" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jd8-WQ-LAc" id="NDk-yC-nTA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sYa-TN-Ag4">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="QP6-zc-lYP" kind="show" id="Yg3-R6-9kD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="HfN-VS-APw" id="wsu-9g-xJZ"/>
+                            <outlet property="delegate" destination="HfN-VS-APw" id="SsC-2F-ghz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lk9-Cp-AR8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-273" y="430"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="wRg-DA-tpG">
+            <objects>
+                <viewController id="QP6-zc-lYP" customClass="ImageViewController" customModule="ImageLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p5E-LN-WOs"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ff-cA-bVD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ybr-7e-Wkh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvA-Fs-mlP">
+                                <rect key="frame" x="255" y="559" width="104" height="30"/>
+                                <state key="normal" title="Toggle Camera"/>
+                                <connections>
+                                    <action selector="switchCamera:" destination="QP6-zc-lYP" eventType="touchUpInside" id="yEP-Ke-Pu4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeU-Xn-yTM">
+                                <rect key="frame" x="16" y="559" width="87" height="30"/>
+                                <state key="normal" title="Toggle Flash"/>
+                                <connections>
+                                    <action selector="flash:" destination="QP6-zc-lYP" eventType="touchUpInside" id="cdg-lO-JNO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vas-BM-wS5">
+                                <rect key="frame" x="135" y="606" width="105.5" height="21"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="9ff-cA-bVD" firstAttribute="top" secondItem="vas-BM-wS5" secondAttribute="bottom" constant="20" id="1Wi-1P-o04"/>
+                            <constraint firstItem="WeU-Xn-yTM" firstAttribute="leading" secondItem="ybr-7e-Wkh" secondAttribute="leadingMargin" id="4gm-u7-k2F"/>
+                            <constraint firstItem="rvA-Fs-mlP" firstAttribute="trailing" secondItem="ybr-7e-Wkh" secondAttribute="trailingMargin" id="64Z-BZ-H04"/>
+                            <constraint firstItem="WeU-Xn-yTM" firstAttribute="baseline" secondItem="rvA-Fs-mlP" secondAttribute="baseline" id="Qqc-Yf-GvY"/>
+                            <constraint firstItem="rvA-Fs-mlP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ybr-7e-Wkh" secondAttribute="leading" constant="20" symbolic="YES" id="TSt-mV-ZTT"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WeU-Xn-yTM" secondAttribute="trailing" constant="20" symbolic="YES" id="YIk-Ep-cHa"/>
+                            <constraint firstItem="vas-BM-wS5" firstAttribute="centerX" secondItem="ybr-7e-Wkh" secondAttribute="centerX" id="nn8-N8-EjT"/>
+                            <constraint firstItem="vas-BM-wS5" firstAttribute="top" secondItem="rvA-Fs-mlP" secondAttribute="bottom" constant="17" id="pPA-fY-Bh4"/>
+                            <constraint firstItem="vas-BM-wS5" firstAttribute="top" secondItem="WeU-Xn-yTM" secondAttribute="bottom" constant="17" id="z9S-HN-x3r"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ciX-px-4WY"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="rvA-Fs-mlP" id="hjS-9e-cDl"/>
+                        <outlet property="flashButton" destination="WeU-Xn-yTM" id="QhC-M6-fIi"/>
+                        <outlet property="headPositionLabel" destination="vas-BM-wS5" id="19g-fB-ra0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXo-jA-VTQ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="598" y="796"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
