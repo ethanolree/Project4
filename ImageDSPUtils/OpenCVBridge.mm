@@ -94,7 +94,21 @@ int heartRate = 0;
         frameCount += 1;
     }
     
+    [self enqueue:[NSNumber numberWithDouble:avgPixelIntensity.val[0]]];
+    [self dequeue];
+    
     return detected;
+}
+
+- (void) dequeue {
+    id firstVal = [_redArray objectAtIndex:0];
+    if (firstVal != nil) {
+        [self.redArray removeObjectAtIndex:0];
+    }
+}
+
+- (void) enqueue:(NSNumber*)val {
+    [self.redArray addObject:val];
 }
 
 -(void)processImage{

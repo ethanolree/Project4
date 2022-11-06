@@ -46,6 +46,11 @@
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QsD-lM-X70">
+                                <rect key="frame" x="0.0" y="402" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -72,6 +77,7 @@
                         <outlet property="cameraButton" destination="HqB-mz-Xht" id="T2C-YY-4bg"/>
                         <outlet property="flashButton" destination="fsl-XI-9ND" id="awt-It-kbw"/>
                         <outlet property="flashSlider" destination="AZh-I9-zyC" id="cd6-Eh-9cl"/>
+                        <outlet property="graphView" destination="QsD-lM-X70" id="KA8-dX-RXm"/>
                         <outlet property="stageLabel" destination="17Z-Pc-DCH" id="8wP-8W-1JO"/>
                     </connections>
                 </viewController>
@@ -87,7 +93,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="598" y="33"/>
+            <point key="canvasLocation" x="597.60000000000002" y="32.833583208395808"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="qLl-Ug-w6H">

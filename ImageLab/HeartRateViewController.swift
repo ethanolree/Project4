@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Metal
 
 class HeartRateViewController: UIViewController   {
 
@@ -18,18 +19,36 @@ class HeartRateViewController: UIViewController   {
     var detector:CIDetector! = nil
     let bridge = OpenCVBridge()
     var isFlashOn = false;
+    var redValues: [Float] = []
     
     //MARK: Outlets in view
     @IBOutlet weak var flashSlider: UISlider!
     @IBOutlet weak var stageLabel: UILabel!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var flashButton: UIButton!
+    
+    lazy var graph:MetalGraph? = {
+        return MetalGraph(userView: self.graphView)
+    }()
     
     //MARK: ViewController Hierarchy
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = nil
+        self.bridge.redArray = NSMutableArray(array: [Float](repeating: 0, count: 450))
+        
+        // Set up graph
+        if let graph = self.graph{
+            graph.setBackgroundColor(r: 0, g: 0, b: 0, a: 1)
+            // add in graphs for display
+            graph.addGraph(withName: "heartGraph",
+                            shouldNormalizeForFFT: true,
+                            numPointsInGraph: 450)
+                
+            graph.makeGrids() // add grids to graph
+        }
         
         // setup the OpenCV bridge nose detector, from file
         self.bridge.loadHaarCascade(withFilename: "nose")
@@ -52,6 +71,15 @@ class HeartRateViewController: UIViewController   {
             videoManager.start()
         }
     
+    }
+    
+    // periodically, update the graph with refreshed FFT Data
+    @objc
+    func updateGraph(){
+        self.graph?.updateGraph(
+            data: redValues,
+            forKey: "heartGraph"
+        )
     }
     
     //MARK: Process image output
@@ -79,6 +107,8 @@ class HeartRateViewController: UIViewController   {
         
         if (self.bridge.processFinger(isFlashOn)) {
             DispatchQueue.main.async {
+                self.redValues = (self.bridge.redArray as NSArray).map({ ($0 as! NSNumber).floatValue });
+                self.updateGraph();
                 self.cameraButton.isEnabled = false;
                 self.flashButton.isEnabled = false;
                 self.videoManager.turnOnFlashwithLevel(0.5);

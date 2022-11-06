@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		785CB18B2915EA740050219D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CB18A2915EA740050219D /* ImageViewController.swift */; };
+		785CB18D29172B580050219D /* MetalGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CB18C29172B580050219D /* MetalGraph.swift */; };
+		787480C32917375B007E5CF4 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 787480C22917375B007E5CF4 /* Shaders.metal */; };
 		789A9C48290DA311005348E7 /* questions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 789A9C47290DA311005348E7 /* questions.txt */; };
 		B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31A1D8340F0000114A1 /* AppDelegate.swift */; };
 		B650B31D1D8340F0000114A1 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31C1D8340F0000114A1 /* HeartRateViewController.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		785CB18A2915EA740050219D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		785CB18C29172B580050219D /* MetalGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalGraph.swift; sourceTree = "<group>"; };
+		787480C22917375B007E5CF4 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = SOURCE_ROOT; };
 		789A9C47290DA311005348E7 /* questions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.txt; sourceTree = "<group>"; };
 		B650B3171D8340F0000114A1 /* ImageLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650B31A1D8340F0000114A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 		B650B30E1D8340F0000114A1 = {
 			isa = PBXGroup;
 			children = (
+				787480C22917375B007E5CF4 /* Shaders.metal */,
 				789A9C47290DA311005348E7 /* questions.txt */,
 				B67B72B61D996AB2008EDDE1 /* opencv2.framework */,
 				B650B34A1D83435A000114A1 /* ImageDSPUtils */,
@@ -77,6 +82,7 @@
 			children = (
 				B650B31A1D8340F0000114A1 /* AppDelegate.swift */,
 				B650B31C1D8340F0000114A1 /* HeartRateViewController.swift */,
+				785CB18C29172B580050219D /* MetalGraph.swift */,
 				B650B31E1D8340F0000114A1 /* Main.storyboard */,
 				B650B3211D8340F0000114A1 /* Assets.xcassets */,
 				B650B3231D8340F0000114A1 /* LaunchScreen.storyboard */,
@@ -179,7 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6E657991D95AA4500E75C60 /* VideoAnalgesic.swift in Sources */,
+				787480C32917375B007E5CF4 /* Shaders.metal in Sources */,
 				B650B31D1D8340F0000114A1 /* HeartRateViewController.swift in Sources */,
+				785CB18D29172B580050219D /* MetalGraph.swift in Sources */,
 				785CB18B2915EA740050219D /* ImageViewController.swift in Sources */,
 				B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */,
 				B67B72BB1D996ADE008EDDE1 /* OpenCVBridge.mm in Sources */,

@@ -15,6 +15,7 @@
 @interface OpenCVBridge : NSObject
 
 @property (nonatomic) NSInteger processType;
+@property (nonatomic) NSMutableArray* redArray;
 
 // process the finger
 -(Boolean)processFinger:(Boolean)isFlashOn;
@@ -26,6 +27,9 @@
 
 //get the image raw opencv
 -(CIImage*)getImage;
+
+//get the red values
+-(NSArray*)getRedArray;
 
 //get the image inside the original bounds
 -(CIImage*)getImageComposite;
