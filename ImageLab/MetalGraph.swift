@@ -56,8 +56,8 @@ class MetalGraph {
     
     //MARK: Constants
     private struct GraphConstants{
-        static let fftNormalizer:Float = 64.0
-        static let fftAddition:Float = 40.0
+        static let fftNormalizer:Float = 255.0
+        static let fftAddition:Float = -127.5
         static let maxPointsPerGraph = 512 // you can increase this or decrease for different GPU speeds
         static let numShaderFloats = 4
     }

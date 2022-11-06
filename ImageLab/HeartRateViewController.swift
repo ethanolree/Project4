@@ -39,7 +39,7 @@ class HeartRateViewController: UIViewController   {
         self.view.backgroundColor = nil
         self.bridge.redArray = NSMutableArray(array: [Float](repeating: 0, count: 450))
         //Put graph on top of camera
-        self.graphView.superview?.bringSubviewToFront(graphView)
+        //self.graphView.superview?.bringSubviewToFront(graphView)
         // Set up graph
         if let graph = self.graph{
             graph.setBackgroundColor(r: 0, g: 0, b: 0, a: 1)
