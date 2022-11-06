@@ -52,7 +52,7 @@ int heartRate = 0;
     
     avgFloatPixelIntensity = cv::sum( image_copy );
     // they say that sprintf is depricated, but it still works for c++
-    sprintf(text,"Avg. R: %.0f, G: %.0f, B: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
+    sprintf(text,"Please keep finger very still!");
     cv::putText(_image, text, cv::Point(0, 10), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
     detected = (avgPixelIntensity.val[0] + avgPixelIntensity.val[1] + avgPixelIntensity.val[2]) / 3 < threshold;
     
@@ -71,14 +71,14 @@ int heartRate = 0;
     }
     
     // Displays text after 100 frames
-    //Assuming max heart rate of 200bpm, 30fps wouldn't allow peaks within 9 frames
+    //Assuming max heart rate of 175bpm, 30fps wouldn't allow peaks within 10 frames
     if (count == timeToCount) {
         //count peaks, extrapolate to heart rate
         heartRate=0;
         for (int i=4;i<timeToCount;i++){
-            if (red[i]>red[i-4] && red[i]>red[i-3] && red[i]>red[i-2] && red[i]>red[i-1] && red[i]>red[i+1] && red[i]>red[i+2] && red[i]>red[i+3] && red[i]>red[i+4]){
+            if (red[i]>red[i-4] && red[i]>red[i-3] && red[i]>red[i-2] && red[i]>red[i-1] && red[i]>red[i+1] && red[i]>red[i+2] && red[i]>red[i+3] && red[i]>red[i+4] && red[i]>red[i+5]){
                 heartRate++;
-                i = i+3;
+                i = i+4;
             }
             
             
